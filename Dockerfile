@@ -1,10 +1,15 @@
 # Base image with R 4.5.1
 FROM rocker/shiny:4.5.1
 
-# General updates
+# General updates and system dependencies
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y build-essential gfortran git libxml2-dev libmagick++-dev libssl-dev libharfbuzz-dev libfribidi-dev libcurl4-openssl-dev libgsl-dev libgit2-dev libssh2-1-dev libudunits2-dev libpng-dev libjpeg-dev libfreetype6-dev && \
+    apt-get install -y build-essential gfortran git wget curl \
+    libxml2-dev libmagick++-dev libssl-dev libharfbuzz-dev libfribidi-dev \
+    libcurl4-openssl-dev libgsl-dev libgit2-dev libssh2-1-dev libudunits2-dev \
+    libpng-dev libjpeg-dev libfreetype6-dev libtiff-dev liblapack-dev libblas-dev \
+    pandoc libopenblas-dev libreadline-dev libncurses-dev zlib1g-dev \
+    libhdf5-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
