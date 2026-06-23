@@ -11,12 +11,12 @@ RUN apt-get update && \
 # Install the required packages
 # Recreate the R environment using renv package
 RUN Rscript -e 'install.packages(c("renv"))'
-COPY /renv.lock /srv/shiny-server/renv.lock
+COPY renv.lock /srv/shiny-server/renv.lock
 RUN Rscript -e 'setwd("/srv/shiny-server/");renv::restore();'
 
 # Copy the app files (scripts, data, etc.)
 RUN rm -rf /srv/shiny-server/*
-COPY /shinyAppMulti/ /srv/shiny-server/
+COPY shinyAppMulti/ /srv/shiny-server/
 
 # Ensure that the expected user is present in the container
 RUN if id shiny &>/dev/null && [ "$(id -u shiny)" -ne 999 ]; then \
