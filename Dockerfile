@@ -4,7 +4,7 @@ FROM rocker/shiny:4.5.1
 # General updates
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y git libxml2-dev libmagick++-dev libssl-dev libharfbuzz-dev libfribidi-dev && \
+    apt-get install -y build-essential git libxml2-dev libmagick++-dev libssl-dev libharfbuzz-dev libfribidi-dev libcurl4-openssl-dev libgsl-dev libgit2-dev libssh2-1-dev libudunits2-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -31,5 +31,3 @@ USER shiny
 EXPOSE 3838
 
 CMD ["/usr/bin/shiny-server"]
-
-
