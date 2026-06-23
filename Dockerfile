@@ -13,14 +13,10 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install the required packages
-# Recreate the R environment using renv package
-RUN Rscript -e 'install.packages(c("renv"))'
-COPY renv.lock /srv/shiny-server/renv.lock
-RUN Rscript -e 'setwd("/srv/shiny-server/");renv::restore();'
+# Install R packages directly
+RUN Rscript -e 'install.packages(c("shiny", "shinyhelper", "data.table", "Matrix", "DT", "magrittr", "ggplot2", "ggrepel", "hdf5r", "ggdendro", "gridExtra"), dependencies = TRUE)'
 
 # Copy the app files (scripts, data, etc.)
-RUN rm -rf /srv/shiny-server/*
 COPY shinyAppMulti/ /srv/shiny-server/
 
 # Ensure that the expected user is present in the container
