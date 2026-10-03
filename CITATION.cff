@@ -1,0 +1,15 @@
+cff-version: "1.2.0"
+message: "If you use this code, please cite this repository."
+type: software
+title: "LEC-proliferation"
+authors:
+  - family-names: "Gloger"
+    given-names: "Marleen"
+  - family-names: "Johansson"
+    given-names: "Anna"
+  - family-names: "Smialowska"
+    given-names: "Agata"
+  - family-names: "Koltowska"
+    given-names: "Katarzyna"
+repository-code: "https://github.com/LymphaticsLab/LEC-proliferation"
+url: "https://github.com/LymphaticsLab/LEC-proliferation"
